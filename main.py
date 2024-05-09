@@ -1,14 +1,14 @@
 import time, json, os
 
 def readinput():
-    filepath = os.getcwd()
+    filepath = os.path.dirname(os.path.abspath(__file__))
 
     # Open the File and Read the Contents
     with open(filepath + '/' + 'input.txt', 'r') as file:
         data = file.read()
     return data
 
-parent_dir = os.getcwd()
+parent_dir = os.path.dirname(os.path.abspath(__file__))
 config_path = os.path.join(parent_dir, "config.json")
 
 with open(config_path, 'r') as f:
