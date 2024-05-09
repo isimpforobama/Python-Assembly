@@ -23,8 +23,8 @@ Open main.py again, press CTRL + V to paste the filepath (remove any surrounding
 #     - Example: "PRINT +Current Number is +{0}" will print "Current Number is 10" if the value of the Memory Location 0 is 10.
 #     - It also supports newline characters such as "\n", Here is a Example
 #     - "PRINT +\n" or "PRINT +Your Number +\n+{0}" Will print 
-#     - Your Number
-#     - 10
+#       Your Number
+#       10
 #     - The final string is then printed to the console.
 # HALT - Stops the Program
 # NOP - No Operation
