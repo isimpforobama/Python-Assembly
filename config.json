@@ -5,6 +5,6 @@
     "sleepatloop": true,
     "sleeptime": 0.0001,
     "requirehalt": true,
-    "Debugging": true,
+    "Debugging": false,
     "Display_Program_finish_Message": true
 }
