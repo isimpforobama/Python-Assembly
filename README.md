@@ -4,7 +4,7 @@ When opening main.py for the first time, ensure filepath.db doesn't exist. Then,
 Open main.py again, press CTRL + V to paste the filepath (remove any surrounding commas). Subsequently, you won't need to repeat this unless the folder is relocated.
 
 # Language Syntax.
-# ADD - Takes a input of 2 Memory Locations and stores the sum of the two Memory Location Values a into a third Memory Location
+# ADD - Takes three inputs A B C it Adds A and B together and puts the sum into the address of C
 # SUB - Same as ADD but subtracts the two Memory Location Values
 # MUL - Same as ADD but multiplies the two Memory Location Values
 # DIV - Same as ADD but divides the two Memory Location Values
