@@ -1,0 +1,10 @@
+
+{
+    "_comment": "Unless you are doing Very intense programs leave 'memory' and 'sleepatloop' at thier default values",
+    "memory": 4096,
+    "sleepatloop": true,
+    "sleeptime": 0.0001,
+    "requirehalt": true,
+    "Debugging": true,
+    "Display_Program_finish_Message": true
+}

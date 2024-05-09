@@ -1,51 +1,28 @@
-import time
-import sqlite3
-
-# Create a Database to store the filepath the user enters
-conn = sqlite3.connect('filepath.db')
-c = conn.cursor()
-
-
+import time, json, os
 
 def readinput():
-    c.execute('CREATE TABLE IF NOT EXISTS filepath (path TEXT)')
-    # Get the Filepath from the User if the Filepath is not in the Database
-    if c.execute('SELECT * FROM filepath').fetchone() == None:
-        filepath = input('Enter the Filepath of the input.txt file: ')
-    else:
-        filepath = c.execute('SELECT * FROM filepath').fetchone()[0]
-    # Insert the Filepath into the Database
-    c.execute('INSERT INTO filepath VALUES (?)', (filepath,))
-    conn.commit()
+    filepath = os.getcwd()
+
     # Open the File and Read the Contents
-    with open(filepath, 'r') as file:
+    with open(filepath + '/' + 'input.txt', 'r') as file:
         data = file.read()
     return data
 
-# Language Syntax.
-# ADD - Takes a input of 2 Memory Locations and stores the sum of the two Memory Location Values a into a third Memory Location
-# SUB - Same as ADD but subtracts the two Memory Location Values
-# MUL - Same as ADD but multiplies the two Memory Location Values
-# DIV - Same as ADD but divides the two Memory Location Values
-# JEQ - Takes a input Number and jumps to that line Number in the code if the two Memory Locations are equal
-# JMP - Takes a input Number and jumps to that line Number in the code
-# JNE - Takes a input Number and jumps to that line Number in the code if the two Memory Locations are not equal
-# JLT - Takes a input Number and jumps to that line Number in the code if the first Memory Location is less than the second Memory Location
-# JGT - Takes a input Number and jumps to that line Number in the code if the first Memory Location is greater than the second Memory Location
-# BIZ - Takes 1 input Number and jumps to that line Number in the code if the last ADD or the last SUB or the last MUL or the last DIV operation equals 0
-# LOD - Takes 2 Inputs A and B and stores the value of the Input B into the Memory Location A
-# STR - Takes 2 Inputs A and B and stores the value of the Memory Location B into the Memory Location A
-# PRT - Takes a string as input which can be a combination of literal strings and memory location references. Literal strings are printed as is, while memory 
-#     - location references (enclosed in '{' and '}') are replaced with the value stored in the corresponding memory location. 
-#     - If multiple strings are to be printed, they can be concatenated using the '+' operator. 
-#     - When Calling Variables in the PRT Operation, the variable must be enclosed in curly braces and not have any Spaces.
-#     - Example: "PRT +Current Number is +{0}" will print "Current Number is 10" if the value of the Memory Location 0 is 10.
-#     - The final string is then printed to the console.
-# HLT - Stops the Program
-# NOP - No Operation
-# SLP - Sleeps for a certain amount of time in Milliseconds
+parent_dir = os.getcwd()
+config_path = os.path.join(parent_dir, "config.json")
 
+with open(config_path, 'r') as f:
+    config = json.load(f)
 
+json_config_memory = config.get('memory')
+json_config_sleepatloop = config.get('sleepatloop')
+json_config_sleeptime = config.get('sleeptime')
+json_config_requirehalt = config.get('requirehalt')
+Debugging = config.get('Debugging')
+displayprogramfinishmessage = config.get('Display_Program_finish_Message')
+
+if Debugging == True:
+    print('Config Settings are\nAvailable Memory: ' + str(json_config_memory) + '\nSleep at Loop: ' + str(json_config_sleepatloop) + '\nSleep Time: ' + str(json_config_sleeptime) + '\nRequire Halt: ' + str(json_config_requirehalt))
 
 code = []
 
@@ -53,7 +30,7 @@ code = []
 code_length = 0
 
 # Available Memory Locations
-AVAILABLEMEMORY = 1024 # Does not actually take real memory, this Variable is just for the sake of the program
+AVAILABLEMEMORY = json_config_memory # Does not actually take real memory, this Variable is just for the sake of the program
 RAM = [0] * AVAILABLEMEMORY
 
 # Last Operation
@@ -105,10 +82,16 @@ def main():
     # Current Line Number
     current_line = 0
 
+    json_config_sleeptime
+    if json_config_sleepatloop is True:
+        sleeptime = json_config_sleeptime
+    elif json_config_sleeptime is False:
+        sleeptime = 0
+
     # Loop Through Each Line in the Code
     while current_line <= code_length:
         # Sleep for 0.01 Seconds if the program is laggy
-        # time.sleep(0.01)
+        time.sleep(sleeptime)
         # Split the Line into a list
         LINEVALUES = code[current_line].split(' ')
         # Get the Operation the line is calling
@@ -117,6 +100,9 @@ def main():
         # print(last_operation)
         # ADD Operation
         if OPERATION == 'ADD':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 4:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 3 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             # Get the Memory Locations
             a = RAM[int(LINEVALUES[1])]
             b = RAM[int(LINEVALUES[2])]
@@ -127,6 +113,9 @@ def main():
         
         # SUB Operation
         elif OPERATION == 'SUB':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 4:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 3 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             # Get the Memory Locations
             a = RAM[int(LINEVALUES[1])]
             b = RAM[int(LINEVALUES[2])]
@@ -137,6 +126,9 @@ def main():
         
         # MUL Operation
         elif OPERATION == 'MUL':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 4:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 3 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             # Get the Memory Locations
             a = RAM[int(LINEVALUES[1])]
             b = RAM[int(LINEVALUES[2])]
@@ -147,6 +139,9 @@ def main():
         
         # DIV Operation
         elif OPERATION == 'DIV':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 4:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 3 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             # Get the Memory Locations
             a = RAM[int(LINEVALUES[1])]
             b = RAM[int(LINEVALUES[2])]
@@ -155,12 +150,15 @@ def main():
             DIV(a, b, c)
             last_operation = 'DIV'
         
-        # JMP Operation
-        elif OPERATION == 'JMP':
+        # JUMP Operation
+        elif OPERATION == 'JUMP':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 2:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 1  arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             # Get the Line Number
             if int(LINEVALUES[1]) <= code_length:
                 current_line = int(LINEVALUES[1])
-                last_operation = 'JMP'
+                last_operation = 'JUMP'
                 current_line -= 2
             else:
                 # Find the starting posistion char of the third number
@@ -172,6 +170,9 @@ def main():
 
         # JNE Operation
         elif OPERATION == 'JNE':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 4:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 3 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             if int(LINEVALUES[3]) <= code_length:
                 a = RAM[int(LINEVALUES[1])]
                 b = RAM[int(LINEVALUES[2])]
@@ -190,6 +191,9 @@ def main():
         
         # JLT Operation
         elif OPERATION == 'JLT':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 4:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 3 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             if int(LINEVALUES[3]) <= code_length:
                 a = RAM[int(LINEVALUES[1])]
                 b = RAM[int(LINEVALUES[2])]
@@ -207,6 +211,9 @@ def main():
             
         # JGT Operation
         elif OPERATION == 'JGT':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 4:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 3 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             if int(LINEVALUES[3]) <= code_length:
                 a = RAM[int(LINEVALUES[1])]
                 b = RAM[int(LINEVALUES[2])]
@@ -225,6 +232,9 @@ def main():
 
         # JEQ Operation
         elif OPERATION == 'JEQ':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 4:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 3 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             if int(LINEVALUES[3]) <= code_length:
                 a = RAM[int(LINEVALUES[1])]
                 b = RAM[int(LINEVALUES[2])]
@@ -254,50 +264,59 @@ def main():
                 end = code[current_line].find(' ', start)
                 # Raise an Exception
                 raise Exception('\n' + ' ' * (start - 1) + '^' + '~' * (end - start) + '\n' + 'Line ' + str(current_line + 1) + ': ' + 'Line Number ' + LINEVALUES[1] + ' is out of range\n\n')
-        # HLT Operation
-        elif OPERATION == 'HLT':
+        # HALT Operation
+        elif OPERATION == 'HALT':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 1:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 0 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             # Stop the Program
             break
         
-        # PRT Operation
-        elif OPERATION == 'PRT':
-            # Get the value of the Inputed Variable B
-            Function_given = code[current_line]
-            plus_split= Function_given.split("+")
+        # PRINT Operation
+        elif OPERATION == 'PRINT':
 
-            print_statement = ''
-
+            plus_split=code[current_line].split("+")
+            plus_split.pop(0)
             for i in range(len(plus_split)):
-                if plus_split[i] == 'PRT ':
-                    pass
-                elif plus_split[i][0] == '{':
-                    print_statement += str(RAM[int(plus_split[i][1:-1])])
+                if plus_split[i][0] == '{':
+                    print(str(RAM[int(plus_split[i][1:-1])]), end='')
+                elif plus_split[i] == '\\n':
+                    print('\n')
                 else:
-                    print_statement += plus_split[i]
-            print(print_statement)
+                    print(str(plus_split[i]), end='')
+            print()
 
-        # LOD Operation
-        elif OPERATION == 'LOD':
+        # LOAD Operation
+        elif OPERATION == 'LOAD':
+           # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 3:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 2 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             # Get the Memory Locations
             a = int(LINEVALUES[1])
             b = int(LINEVALUES[2])
             # Store the value of the Input B into the Memory Location A
             RAM[a] = b
-            last_operation = 'LOD'
+            last_operation = 'LOAD'
 
-        # SLP OPERATION
-        elif OPERATION == 'SLP':
+        # SLEEP OPERATION
+        elif OPERATION == 'SLEEP':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 2:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 1 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             time.sleep(int(LINEVALUES[1]) / 1000)
-            last_operation = 'SLP'
+            last_operation = 'SLEEP'
 
-        # STR Operation
-        elif OPERATION == 'STR':
+        # STORE Operation
+        elif OPERATION == 'STORE':
+            # if there are less than 3 variables in LINEVALUES, raise an exception
+            if len(LINEVALUES) != 3:
+                raise Exception(str(code[current_line]) + '\n' + 'Line: ' + str(current_line + 1) + ' takes 2 positional arguments but ' + str(len(LINEVALUES) - 1) + ' were given')
             # Get the Memory Locations
             a = int(LINEVALUES[1])
             b = int(LINEVALUES[2])
             # Store the value of the Memory Location B into the Memory Location A
             RAM[a] = RAM[b]
-            last_operation = 'STR'
+            last_operation = 'STORE'
 
         # current_line should always be at the bottom of the loop
         current_line += 1
@@ -305,10 +324,10 @@ def main():
     
 
 if __name__ == '__main__':
-    try:
-        main()
-    except Exception as e:
-        print(code[current_line] + ' ' + str(e))
+    main()
 
-print('Program Finished')
-i = input('Press Enter to Exit')
+if displayprogramfinishmessage == True:
+    print('Program Finished')
+    i = input('Press Enter to Exit')
+else:
+    i = input('')
