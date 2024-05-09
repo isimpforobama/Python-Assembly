@@ -92,9 +92,9 @@ def DIV(a, b, c):
     RAM[c] = SUM
     last_operation = 'DIV'
     last_operation_result = SUM
-
+current_line = 0
 def main():
-    global code, last_operation_result, last_operation, RAM, code_length
+    global code, last_operation_result, last_operation, RAM, code_length, current_line
     # Iterate Through Each Line in the Input File
     input_file = readinput()
     
@@ -106,162 +106,209 @@ def main():
     current_line = 0
 
     # Loop Through Each Line in the Code
-    try:
-        while current_line <= code_length:
-            # Sleep for 0.01 Seconds if the program is laggy
-            # time.sleep(0.01)
-            # Split the Line into a list
-            LINEVALUES = code[current_line].split(' ')
-            # Get the Operation the line is calling
-            OPERATION = LINEVALUES[0]
+    while current_line <= code_length:
+        # Sleep for 0.01 Seconds if the program is laggy
+        # time.sleep(0.01)
+        # Split the Line into a list
+        LINEVALUES = code[current_line].split(' ')
+        # Get the Operation the line is calling
+        OPERATION = LINEVALUES[0]
 
-            # print(last_operation)
-            # ADD Operation
-            if OPERATION == 'ADD':
-                # Get the Memory Locations
-                a = RAM[int(LINEVALUES[1])]
-                b = RAM[int(LINEVALUES[2])]
-                c = int(LINEVALUES[3])
-                # Call the ADD Function
-                ADD(a, b, c)
-                last_operation = 'ADD'
-            
-            # SUB Operation
-            elif OPERATION == 'SUB':
-                # Get the Memory Locations
-                a = RAM[int(LINEVALUES[1])]
-                b = RAM[int(LINEVALUES[2])]
-                c = int(LINEVALUES[3])
-                # Call the SUB Function
-                SUB(a, b, c)
-                last_operation = 'SUB'
-            
-            # MUL Operation
-            elif OPERATION == 'MUL':
-                # Get the Memory Locations
-                a = RAM[int(LINEVALUES[1])]
-                b = RAM[int(LINEVALUES[2])]
-                c = int(LINEVALUES[3])
-                # Call the MUL Function
-                MUL(a, b, c)
-                last_operation = 'MUL'
-            
-            # DIV Operation
-            elif OPERATION == 'DIV':
-                # Get the Memory Locations
-                a = RAM[int(LINEVALUES[1])]
-                b = RAM[int(LINEVALUES[2])]
-                c = int(LINEVALUES[3])
-                # Call the DIV Function
-                DIV(a, b, c)
-                last_operation = 'DIV'
-            
-            # JMP Operation
-            elif OPERATION == 'JMP':
-                # Get the Line Number
+        # print(last_operation)
+        # ADD Operation
+        if OPERATION == 'ADD':
+            # Get the Memory Locations
+            a = RAM[int(LINEVALUES[1])]
+            b = RAM[int(LINEVALUES[2])]
+            c = int(LINEVALUES[3])
+            # Call the ADD Function
+            ADD(a, b, c)
+            last_operation = 'ADD'
+        
+        # SUB Operation
+        elif OPERATION == 'SUB':
+            # Get the Memory Locations
+            a = RAM[int(LINEVALUES[1])]
+            b = RAM[int(LINEVALUES[2])]
+            c = int(LINEVALUES[3])
+            # Call the SUB Function
+            SUB(a, b, c)
+            last_operation = 'SUB'
+        
+        # MUL Operation
+        elif OPERATION == 'MUL':
+            # Get the Memory Locations
+            a = RAM[int(LINEVALUES[1])]
+            b = RAM[int(LINEVALUES[2])]
+            c = int(LINEVALUES[3])
+            # Call the MUL Function
+            MUL(a, b, c)
+            last_operation = 'MUL'
+        
+        # DIV Operation
+        elif OPERATION == 'DIV':
+            # Get the Memory Locations
+            a = RAM[int(LINEVALUES[1])]
+            b = RAM[int(LINEVALUES[2])]
+            c = int(LINEVALUES[3])
+            # Call the DIV Function
+            DIV(a, b, c)
+            last_operation = 'DIV'
+        
+        # JMP Operation
+        elif OPERATION == 'JMP':
+            # Get the Line Number
+            if int(LINEVALUES[1]) <= code_length:
                 current_line = int(LINEVALUES[1])
                 last_operation = 'JMP'
                 current_line -= 2
+            else:
+                # Find the starting posistion char of the third number
+                start = code[current_line].find(LINEVALUES[1]) + len(LINEVALUES[1]) + 1
+                # Find the ending posistion char of the third number
+                end = code[current_line].find(' ', start)
+                # Raise an Exception
+                raise Exception('\n' + ' ' * (start - 1) + '^' + '~' * (end - start) + '\n' + 'Line ' + str(current_line + 1) + ': ' + 'Line Number ' + LINEVALUES[1] + ' is out of range\n\n')
 
-            # JNE Operation
-            elif OPERATION == 'JNE':
+        # JNE Operation
+        elif OPERATION == 'JNE':
+            if int(LINEVALUES[3]) <= code_length:
                 a = RAM[int(LINEVALUES[1])]
                 b = RAM[int(LINEVALUES[2])]
                 if a != b:
                     current_line = int(LINEVALUES[3])
                     last_operation = 'JNE'
                     current_line -= 2
-            
-            # JLT Operation
-            elif OPERATION == 'JLT':
+            else:
+                # Find the starting posistion char of the third number
+                start = code[current_line].find(LINEVALUES[3]) + len(LINEVALUES[3]) + 1
+                # Find the ending posistion char of the third number
+                end = code[current_line].find(' ', start)
+                # Raise an Exception
+                raise Exception('\n' + ' ' * (start - 1) + '^' + '~' * (end - start) + '\n' + 'Line ' + str(current_line + 1) + ': ' + 'Line Number ' + LINEVALUES[1] + ' is out of range\n\n')
+
+        
+        # JLT Operation
+        elif OPERATION == 'JLT':
+            if int(LINEVALUES[3]) <= code_length:
                 a = RAM[int(LINEVALUES[1])]
                 b = RAM[int(LINEVALUES[2])]
                 if a < b:
                     current_line = int(LINEVALUES[3])
                     last_operation = 'JLT'
                     current_line -= 2
+            else:
+                # Find the starting posistion char of the third number
+                start = code[current_line].find(LINEVALUES[3]) + len(LINEVALUES[3]) + 1
+                # Find the ending posistion char of the third number
+                end = code[current_line].find(' ', start)
+                # Raise an Exception
+                raise Exception('\n' + ' ' * (start - 1) + '^' + '~' * (end - start) + '\n' + 'Line ' + str(current_line + 1) + ': ' + 'Line Number ' + LINEVALUES[1] + ' is out of range\n\n')
             
-            # JGT Operation
-            elif OPERATION == 'JGT':
+        # JGT Operation
+        elif OPERATION == 'JGT':
+            if int(LINEVALUES[3]) <= code_length:
                 a = RAM[int(LINEVALUES[1])]
                 b = RAM[int(LINEVALUES[2])]
                 if a > b:
                     current_line = int(LINEVALUES[3])
                     last_operation = 'JGT'
                     current_line -= 2
-            
+            else:
+                # Find the starting posistion char of the third number
+                start = code[current_line].find(LINEVALUES[3]) + len(LINEVALUES[3]) + 1
+                # Find the ending posistion char of the third number
+                end = code[current_line].find(' ', start)
+                # Raise an Exception
+                raise Exception('\n' + ' ' * (start - 1) + '^' + '~' * (end - start) + '\n' + 'Line ' + str(current_line + 1) + ': ' + 'Line Number ' + LINEVALUES[1] + ' is out of range\n\n')
+        
 
-            # JEQ Operation
-            elif OPERATION == 'JEQ':
+        # JEQ Operation
+        elif OPERATION == 'JEQ':
+            if int(LINEVALUES[3]) <= code_length:
                 a = RAM[int(LINEVALUES[1])]
                 b = RAM[int(LINEVALUES[2])]
                 if a == b:
                     current_line = int(LINEVALUES[3])
                     last_operation = 'JEQ'
                     current_line -= 2
-
-            # BIZ Operation
-            elif OPERATION == 'BIZ':
-                # Get the Line Number
+            else:
+                # Find the starting posistion char of the third number
+                start = code[current_line].find(LINEVALUES[3]) + len(LINEVALUES[3]) + 1
+                # Find the ending posistion char of the third number
+                end = code[current_line].find(' ', start)
+                # Raise an Exception
+                raise Exception('\n' + ' ' * (start - 1) + '^' + '~' * (end - start) + '\n' + 'Line ' + str(current_line + 1) + ': ' + 'Line Number ' + LINEVALUES[1] + ' is out of range\n\n')
+    
+        # BIZ Operation
+        elif OPERATION == 'BIZ':
+            if int(LINEVALUES[1]) <= code_length:
                 if last_operation_result == 0:
                     current_line = int(LINEVALUES[1])
                     last_operation = 'BIZ'
                     current_line -= 2
-            
-            # HLT Operation
-            elif OPERATION == 'HLT':
-                # Stop the Program
-                break
-            
-            # PRT Operation
-            elif OPERATION == 'PRT':
-                # Get the value of the Inputed Variable B
-                Function_given = code[current_line]
-                plus_split= Function_given.split("+")
+            else:
+                # Find the starting posistion char of the third number
+                start = code[current_line].find(LINEVALUES[1]) + len(LINEVALUES[1]) + 1
+                # Find the ending posistion char of the third number
+                end = code[current_line].find(' ', start)
+                # Raise an Exception
+                raise Exception('\n' + ' ' * (start - 1) + '^' + '~' * (end - start) + '\n' + 'Line ' + str(current_line + 1) + ': ' + 'Line Number ' + LINEVALUES[1] + ' is out of range\n\n')
+        # HLT Operation
+        elif OPERATION == 'HLT':
+            # Stop the Program
+            break
+        
+        # PRT Operation
+        elif OPERATION == 'PRT':
+            # Get the value of the Inputed Variable B
+            Function_given = code[current_line]
+            plus_split= Function_given.split("+")
 
-                print_statement = ''
+            print_statement = ''
 
-                for i in range(len(plus_split)):
-                    if plus_split[i] == 'PRT ':
-                        pass
-                    elif plus_split[i][0] == '{':
-                        print_statement += str(RAM[int(plus_split[i][1:-1])])
-                    else:
-                        print_statement += plus_split[i]
-                print(print_statement)
+            for i in range(len(plus_split)):
+                if plus_split[i] == 'PRT ':
+                    pass
+                elif plus_split[i][0] == '{':
+                    print_statement += str(RAM[int(plus_split[i][1:-1])])
+                else:
+                    print_statement += plus_split[i]
+            print(print_statement)
 
-            # LOD Operation
-            elif OPERATION == 'LOD':
-                # Get the Memory Locations
-                a = int(LINEVALUES[1])
-                b = int(LINEVALUES[2])
-                # Store the value of the Input B into the Memory Location A
-                RAM[a] = b
-                last_operation = 'LOD'
+        # LOD Operation
+        elif OPERATION == 'LOD':
+            # Get the Memory Locations
+            a = int(LINEVALUES[1])
+            b = int(LINEVALUES[2])
+            # Store the value of the Input B into the Memory Location A
+            RAM[a] = b
+            last_operation = 'LOD'
 
-            # SLP OPERATION
-            elif OPERATION == 'SLP':
-                time.sleep(int(LINEVALUES[1]) / 1000)
-                last_operation = 'SLP'
+        # SLP OPERATION
+        elif OPERATION == 'SLP':
+            time.sleep(int(LINEVALUES[1]) / 1000)
+            last_operation = 'SLP'
 
-            # STR Operation
-            elif OPERATION == 'STR':
-                # Get the Memory Locations
-                a = int(LINEVALUES[1])
-                b = int(LINEVALUES[2])
-                # Store the value of the Memory Location B into the Memory Location A
-                RAM[a] = RAM[b]
-                last_operation = 'STR'
+        # STR Operation
+        elif OPERATION == 'STR':
+            # Get the Memory Locations
+            a = int(LINEVALUES[1])
+            b = int(LINEVALUES[2])
+            # Store the value of the Memory Location B into the Memory Location A
+            RAM[a] = RAM[b]
+            last_operation = 'STR'
 
-            # current_line should always be at the bottom of the loop
-            current_line += 1
-        # make an exception to except any error
-    except Exception as e:
-        print(code[current_line] + ' ' + str(e))
+        # current_line should always be at the bottom of the loop
+        current_line += 1
+
     
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(code[current_line] + ' ' + str(e))
 
 print('Program Finished')
 i = input('Press Enter to Exit')
