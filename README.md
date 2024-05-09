@@ -8,8 +8,8 @@ Open main.py again, press CTRL + V to paste the filepath (remove any surrounding
 # SUB - Same as ADD but subtracts the two Memory Location Values
 # MUL - Same as ADD but multiplies the two Memory Location Values
 # DIV - Same as ADD but divides the two Memory Location Values
-# JEQ - Takes Three inputs A B C if A and B are Equal it will jump to the line C in the code
 # JUMP - Takes a Input A and jumps to that line in the code
+# JEQ - Takes Three inputs A B C if A and B are Equal it will jump to the line C in the code
 # JNE - Takes Three inputs A B C if A and B are Not Equal it will jump to the line C in the code
 # JLT - Takes Three inputs A B C if A is less than B it will jump to the line C in the code
 # JGT - Takes Three inputs A B C if A is Greater than B it will jump to the line C in the code
