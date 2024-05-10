@@ -28,7 +28,10 @@ Open main.py again, press CTRL + V to paste the filepath (remove any surrounding
 #     - The final string is then printed to the console.
 # HALT - Stops the Program
 # NOP - No Operation
-# SLEEP - Takes One Input A and Stops the program from running for that time in milliseconds
+# SLP - Sleeps for a certain amount of time in Milliseconds
+
+Error Supported Functions
+# BIZ, JGT, JLT, JNE, JEQ, JUMP
 
 # Common issues
 One common issues is when Using the PRINT Statement and getting an error when calling it, For example
