@@ -3,3 +3,8 @@ Added \n Functionality to the PRINT statement
 Removed the need for the user to enter the filepath of the input.txt file
 added a config file for normal things you may want to tweak
 added better error support when executing commands in input.txt
+
+5/10/2024
+Added Pointer Functionality
+Added Marker Functionality for Jumps
+Added Broader Error Support
