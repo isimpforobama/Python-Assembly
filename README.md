@@ -169,7 +169,7 @@ PRINT +{2}
 - Here is a Flow chart to visulize this action
 ```mermaid
 graph TD;
-        A+B-->Sum;
+        0+1-->2;
 ```
 - Add takes three inputs, the first two are A and B both of which can take a Memory Address or a Pointer
 - the Third input C is the Outputed Memory address OR pointer that of which is the Sum of a + b
@@ -179,14 +179,19 @@ graph TD;
 - 2 = 0 + 1
 
 # ADD Operation with Pointers
-- LOAD 0 10
-- LOAD 1 20
-- POINTER (0 = First_Number)
-- POINTER (1 = Second_Number)
-- POINTER (2 = SUM)
-- ADD First_Number Second_Number SUM
-- PRINT +{SUM}
-- Output: 30
+```python
+LOAD 0 10
+LOAD 1 20
+POINTER (0 = First_Number)
+POINTER (1 = Second_Number)
+POINTER (2 = SUM)
+ADD First_Number Second_Number SUM
+PRINT +{SUM}
+```
+- Output:
+```
+30
+```
 - This is why Pointers are so Useful it's because they are Very Capable of calling your memory Address's with Ease
 
 
