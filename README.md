@@ -72,10 +72,15 @@ World!
 
 
 # POINTER Syntax
-For these examples we will Assign no inital values
+No Inital values will be asigned
 # Assigning a Pointer
-- POINTER (0 = X)
+```python
+POINTER (0 = X)
+```
 - Output: 
+```
+
+```
 
 # Assigning a Pointer and printing it out
 - POINTER (0 = X)
@@ -83,10 +88,15 @@ For these examples we will Assign no inital values
 - Output: 0
 
 # Assigning multiple Pointers
-- POINTER (0 = X)
-- POINTER (1 = Y)
-- POINTER (2 = SUM)
-- Output: 0
+```python
+POINTER (0 = X)
+POINTER (1 = Y)
+POINTER (2 = SUM)
+```
+- Output:
+```
+
+```
 - These above Pointers Reference Memory address's
 - Whenever you call upon a memory Address in Python Assembly,
 - you can call a Pointer if it's assigned to that memory address
@@ -95,37 +105,73 @@ For these examples we will Assign no inital values
 
 # LOAD Syntax And Printing
 Loading a Value into a Address
-- LOAD 0 10
+```python
+LOAD 0 10
+```
 - Output:
+```
+
+```
 - Whenever you Load a value into something in Python Assembly make sure you call the address first 
 - then give it the value you want
 # Printing a Loaded Value
-- LOAD 0 100
-- PRINT +{0}
-- Output: 100
+```python
+LOAD 0 100
+PRINT +{0}
+```
+- Output:
+```
+100
+```
 
 # Printing a Loaded Value
-- LOAD 0 1000000
-- PRINT +{0}
-- Output: 1000000
+```python
+LOAD 0 1000000
+PRINT +{0}
+```
+- Output:
+```
+1000000
+```
 # Printing a Loaded Value
-- LOAD 1 10
-- PRINT +{1}
-- Output: 10
+```python
+LOAD 1 10
+PRINT +{1}
+```
+- Output:
+```
+10
+```
 # Printing a Loaded Value
-- LOAD 0 10
-- LOAD 1 20
-- PRINT +{0}
-- Output: 10
+```python
+LOAD 0 10
+LOAD 1 20
+PRINT +{0}
+```
+- Output:
+```
+10
+```
 
 # ADD Syntax
 
-# Basic ADD operation
-- LOAD 0 10
-- LOAD 1 20
-- ADD 0 1 2
-- PRINT +{2}
-- Output: 30
+- Basic ADD operation
+```python
+LOAD 0 10
+LOAD 1 20
+ADD 0 1 2
+PRINT +{2}
+```
+- Output:
+```
+30
+```
+- Here is a Flow chart to visulize this action
+```mermaid
+graph TD;
+        A-->B;
+        B-->Sum;
+```
 - Add takes three inputs, the first two are A and B both of which can take a Memory Address or a Pointer
 - the Third input C is the Outputed Memory address OR pointer that of which is the Sum of a + b
 - Pointer Options
