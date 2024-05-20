@@ -31,20 +31,20 @@ Printing a Word
 
 # Printing a Address
 - PRINT +{0}
-# Output: 10
+Output: 10
 
 # Printing a Word and a Address
 - PRINT +Count is: +{0}
-# Output: Count is: 10
+Output: Count is: 10
 
 # Printing a Pointer
 - PRINT +{X}
-# Output: 10
+Output: 10
 
 # Printing using \n
 - PRINT +Hello+\n+World!
-# Output: Hello
-#         World
+Output: Hello
+        World
 
 
 
@@ -52,32 +52,30 @@ Printing a Word
 For these examples we will Assign no inital values
 # Assigning a Pointer
 - POINTER (0 = X)
-# Output: 
+Output: 
 
 # Assigning a Pointer and printing it out
 - POINTER (0 = X)
 - PRINT +{X}
-# Output: 0
+Output: 0
 
 # Assigning multiple Pointers
 - POINTER (0 = X)
 - POINTER (1 = Y)
 - POINTER (2 = SUM)
 # Output: 0
-# These above Pointers Reference Memory address's
-# Whenever you call upon a memory Address in Python Assembly,
-# you can call a Pointer if it's assigned to that memory address
+These above Pointers Reference Memory address's
+Whenever you call upon a memory Address in Python Assembly,
+you can call a Pointer if it's assigned to that memory address
 
 
 
 # LOAD Syntax And Printing
-#
-# Loading a Value into a Address
+Loading a Value into a Address
 - LOAD 0 10
-# Output:
-# Whenever you Load a value into something in Python Assembly make sure you call the address first 
-# then give it the value you want
-#
+Output:
+#henever you Load a value into something in Python Assembly make sure you call the address first 
+then give it the value you want
 # Printing a Loaded Value
 - LOAD 0 100
 - PRINT +{0}
@@ -86,20 +84,16 @@ For these examples we will Assign no inital values
 # Printing a Loaded Value
 - LOAD 0 1000000
 - PRINT +{0}
-# Output: 1000000
-#
+Output: 1000000
 # Printing a Loaded Value
 - LOAD 1 10
 - PRINT +{1}
-# Output: 10
-#
+Output: 10
 # Printing a Loaded Value
 - LOAD 0 10
 - LOAD 1 20
 - PRINT +{0}
-# Output: 10
-
-
+Output: 10
 
 Adding Numbers together with ADD
 
