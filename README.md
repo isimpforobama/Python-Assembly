@@ -28,98 +28,75 @@ Tutorial Video https://youtu.be/8VG2NYoaTHw
 # Printing a Word
 - PRINT +Hello World!
 # Output: Hello World!
-s
-- Printing a Address
--
-PRINT +{0}
--
-Output: 10
 
-- Printing a Word and a Address
--
-PRINT +Count is: +{0}
--
-Output: Count is: 10
+# Printing a Address
+- PRINT +{0}
+# Output: 10
 
-- Printing a Pointer
--
-PRINT +{X}
--
-Output: 10
+# Printing a Word and a Address
+- PRINT +Count is: +{0}
+# Output: Count is: 10
 
-- Printing using \n
--
-PRINT +Hello+\n+World!
--
-Output: Hello
-World
+# Printing a Pointer
+- PRINT +{X}
+# Output: 10
+
+# Printing using \n
+- PRINT +Hello+\n+World!
+# Output: Hello
+#         World
 
 
 
-POINTER Syntax, For these examples we will Assign no inital values
-- Assigning a Pointer
--
-POINTER (0 = X)
--
-Output: 
+# POINTER Syntax, For these examples we will Assign no inital values
+# Assigning a Pointer
+- POINTER (0 = X)
+# Output: 
 
-- Assigning a Pointer and printing it out
--
-POINTER (0 = X)
-PRINT +{X}
--
-Output: 0
+# Assigning a Pointer and printing it out
+- POINTER (0 = X)
+- PRINT +{X}
+# Output: 0
 
-- Assigning multiple Pointers
--
-POINTER (0 = X)
-POINTER (1 = Y)
-POINTER (2 = SUM)
--
-Output: 0
-These above Pointers Reference Memory address's
-Whenever you call upon a memory Address in Python Assembly,
-you can call a Pointer if it's assigned to that memory address
+# Assigning multiple Pointers
+- POINTER (0 = X)
+- POINTER (1 = Y)
+- POINTER (2 = SUM)
+# Output: 0
+# These above Pointers Reference Memory address's
+# Whenever you call upon a memory Address in Python Assembly,
+# you can call a Pointer if it's assigned to that memory address
 
 
 
-LOAD Syntax And Printing
-- Loading a Value into a Address
--
-LOAD 0 10
--
-Output:
-Whenever you Load a value into something in Python Assembly make sure you call the address first 
-then give it the value you want
+# LOAD Syntax And Printing
+#
+# Loading a Value into a Address
+- LOAD 0 10
+# Output:
+# Whenever you Load a value into something in Python Assembly make sure you call the address first 
+# then give it the value you want
+#
+# Printing a Loaded Value
+- LOAD 0 100
+- PRINT +{0}
+# Output: 100
 
-- Printing a Loaded Value
--
-LOAD 0 100
-PRINT +{0}
--
-Output: 100
-
-- Printing a Loaded Value
--
-LOAD 0 1000000
-PRINT +{0}
--
-Output: 1000000
-
-- Printing a Loaded Value
--
-LOAD 1 10
-PRINT +{1}
--
-Output: 10
-
-- Printing a Loaded Value
--
-LOAD 0 10
-LOAD 1 20
-PRINT +{0}
--
-Output: 10
+# Printing a Loaded Value
+- LOAD 0 1000000
+- PRINT +{0}
+# Output: 1000000
+#
+# Printing a Loaded Value
+- LOAD 1 10
+- PRINT +{1}
+# Output: 10
+#
+# Printing a Loaded Value
+- LOAD 0 10
+- LOAD 1 20
+- PRINT +{0}
+# Output: 10
 
 
 
