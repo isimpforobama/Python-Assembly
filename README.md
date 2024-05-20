@@ -34,22 +34,41 @@ PRINT +Hello World!
 Hello World!
 ```
 # Printing a Address
-- PRINT +{0}
-- Output: 10
+```python
+PRINT +{0}
+```
+- Output:
+```
+10
+```
 
 # Printing a Word and a Address
-- PRINT +Count is: +{0}
-- Output: Count is: 10
+```python
+PRINT +Count is: +{0}
+```
+- Output:
+```
+Count is: 10
+```
 
 # Printing a Pointer
-- PRINT +{X}
-- Output: 10
+```python
+PRINT +{X}
+```
+- Output:
+```
+10
+```
 
 # Printing using \n
-- PRINT +Hello+\n+World!
-- Output: Hello
-        World
-
+```python
+PRINT +Hello+\n+World!
+```
+- Output: 
+```
+Hello
+World!
+```
 
 
 # POINTER Syntax
