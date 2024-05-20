@@ -192,33 +192,49 @@ PRINT +{SUM}
 ```
 30
 ```
-- This is why Pointers are so Useful it's because they are Very Capable of calling your memory Address's with Ease
+- Here is a Flow chart to visulize this action
+```mermaid
+graph TD;
+        A+B-->SUM;
+```
+- This is why Pointers are so Useful it's because they are Very Capable of calling your Memory Address's with Ease
 
 
 
 # JUMP Syntax and Common Errors with Markers
 
-- for This demonstration im going to announce the theoretical line number that you will have when you
-- are coding this inside your input.txt file.
+- for This demonstration im going to include the theoretical line number that you will have when you are coding this inside your input.txt file.
 
 # Basic JUMP Operation
-- Ln 1 PRINT +Hello World
-- Ln 2 JUMP 1
-- Output: Hello World (Forever)
-- 
+```python
+Ln 1 PRINT +Hello World
+Ln 2 JUMP 1
+```
+- Output:
+```
+Hello World
+Hello World
+Hello World
+...(Forever)
+```
 - the Jump operation is pretty self explanitory. it simply takes a number OR a marker
 - and runs that line of Code in the file and continues normal how it would from that line of code
 - so the Code runs Line 1 and it prints to the screen then it sees the Jump operation and
-- it jumps to Line 1 in the Code and continues Forever
+- it jumps to Line 1 in the Code and repeats Forever
 
-- Understanding JUMP better
+# Understanding JUMP better
+```python
 Ln 1 PRINT +Hello
 Ln 2 JUMP 5
 Ln 3 PRINT +Goodbye
 Ln 4 PRINT +Goodbye
 Ln 5 PRINT +World
-- Output: Hello 
--         World
+```
+- Output:
+```
+Hello
+World
+```
 - When the Program seen the JUMP Operation it read that it wants to go to line 5 and since code order does not
 - magicaly go back up the Program simply ends and the Goodbye prints never get executed
 
@@ -233,10 +249,18 @@ Ln 5 PRINT +World
 - every next number can be how ever much bigger may the next last number be either 1 bigger or 100 bigger it doesin't matter
 
 # Basic Marker Jump
-- Ln 1 :My_Marker 0
-- Ln 2 PRINT +Hello World
-- Ln 3 JUMP My_Marker
-- Output: Hello World (Forever)
+```python
+Ln 1 :My_Marker 0
+Ln 2 PRINT +Hello World
+Ln 3 JUMP My_Marker
+```
+- Output:
+```
+Hello World
+Hello World
+Hello World
+...(Forever)
+```
 
 - a Conditional JUMP Operation is very useful for loops and despite the complicated look they are very easy to understand.
 - For this example we will be using the JEQ Operation
@@ -246,29 +270,40 @@ Ln 5 PRINT +World
 - A and B can be either Memory Address's or Pointers
 
 # Conditional JUMP Operations (True)
-- Ln 1 LOAD 0 10
-- Ln 2 LOAD 1 10
-- Ln 3 :My_Marker 0
-- Ln 4 PRINT +Hello World
-- Ln 5 JEQ 0 1 My_Marker
-- Output: Hello World (Forever)
+```python
+Ln 1 LOAD 0 10
+Ln 2 LOAD 1 10
+Ln 3 :My_Marker 0
+Ln 4 PRINT +Hello World
+Ln 5 JEQ 0 1 My_Marker
+```
+- Output:
+```
+Hello World
+Hello World
+Hello World
+...(Forever)
+```
 
 - In this case JEQ would return true therefor it would go to where we want in the code(My_Marker)
 
 # Conditional JUMP Operations (False)
-- Ln 1 LOAD 0 10
-- Ln 2 LOAD 1 5
-- Ln 3 :My_Marker 0
-- Ln 4 PRINT +Hello World
-- Ln 5 JEQ 0 1 My_Marker
-- Output: Hello World
-
+```python
+Ln 1 LOAD 0 10
+Ln 2 LOAD 1 5
+Ln 3 :My_Marker 0
+Ln 4 PRINT +Hello World
+Ln 5 JEQ 0 1 My_Marker
+```
+- Output:
+```
+Hello World
+```
 - In this case JEQ would return false therefor it would print once and not jump in the code
-
+- There are many other Conditional Jump Statements, JEQ is just one of them but if you have a specific case there is more Conditional Jump Statements
 # Loops
 - Loops are by far one of the most things used in programming that's why it's essential to know how to use one
 - For a basic loop we will First learn how to make a incrementer
-- 
 # Basic Incrementer
 ```python
 LOAD 0 1
@@ -295,16 +330,27 @@ graph TD;
 - think of the address 1 as the amount we increment 0 by
 - we can also modify this to loop
 # Basic Loop Incrementer
-- LOAD 0 1
-- LOAD 1 1
-- :Loop 0
-- ADD 0 1 0
-- PRINT +{0}
-- JUMP Loop
-- Output: 1
-          2
-          3...(Forever)
-
+```python
+LOAD 0 1
+LOAD 1 1
+:Loop 0
+ADD 0 1 0
+PRINT +{0}
+JUMP Loop
+```
+- Output:
+```
+1
+2
+3
+...(Forever)
+```
+- Here is a Flow chart to visulize this action
+```mermaid
+graph TD;
+        Ln 1 ADD A+B>SUM;
+        Ln 2 JUMP 1-->Ln 1 ADD A+B>SUM;
+```
 
 - Now this last part is a little challenging but here is a Loop with a Condition that if the count reaches 10 ten it will stop
 
