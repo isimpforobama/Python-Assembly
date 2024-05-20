@@ -28,8 +28,8 @@ For these examples 0 will be assigned with a value of 10 and X will be assigned 
 Printing a Word
 ```python
 PRINT +Hello World!
-Output: Hello World!
 ```
+Output: Hello World!
 # Printing a Address
 - PRINT +{0}
 - Output: 10
@@ -203,6 +203,13 @@ Ln 5 PRINT +World
 - ADD 0 1 0
 - PRINT +{0}
 - Output: 2
+
+- Here is a Flow chart to visulize this action
+```mermaid
+graph TD;
+        0-->1;
+        1-->0;
+```
 
 - So we are getting two values, 0 and 1.
 - we are adding 0 and 1 together and putting the sum of that back into 0
