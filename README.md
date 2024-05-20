@@ -22,14 +22,13 @@ Tutorial Video https://youtu.be/8VG2NYoaTHw
 # :marker - Makers are Extremely useful when making loops inside of your code
 
 
--
-PRINT Syntax
-For these examples 0 will be assigned with a value of 10 and X will be assigned with 0's Value(10)
-Printing a Word
--
-- PRINT +Hello World!
-Output: Hello World!
 
+# PRINT Syntax
+# For these examples 0 will be assigned with a value of 10 and X will be assigned with 0's Value(10)
+# Printing a Word
+- PRINT +Hello World!
+# Output: Hello World!
+s
 - Printing a Address
 -
 PRINT +{0}
