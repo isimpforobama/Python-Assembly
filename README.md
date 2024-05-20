@@ -64,9 +64,9 @@ For these examples we will Assign no inital values
 - POINTER (1 = Y)
 - POINTER (2 = SUM)
 - Output: 0
-These above Pointers Reference Memory address's
-Whenever you call upon a memory Address in Python Assembly,
-you can call a Pointer if it's assigned to that memory address
+- These above Pointers Reference Memory address's
+- Whenever you call upon a memory Address in Python Assembly,
+- you can call a Pointer if it's assigned to that memory address
 
 
 
@@ -74,8 +74,8 @@ you can call a Pointer if it's assigned to that memory address
 Loading a Value into a Address
 - LOAD 0 10
 - Output:
-#henever you Load a value into something in Python Assembly make sure you call the address first 
-then give it the value you want
+- Whenever you Load a value into something in Python Assembly make sure you call the address first 
+- then give it the value you want
 # Printing a Loaded Value
 - LOAD 0 100
 - PRINT +{0}
