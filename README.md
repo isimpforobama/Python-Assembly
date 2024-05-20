@@ -346,20 +346,29 @@ JUMP Loop
 ...(Forever)
 ```
 
-- This Above Code simply Increments but loops over the incrementer
+- This Above Code simply Increments and loops over the incrementer
 
 # Conditional Loop Incrementer
-- LOAD 0 1
-- LOAD 1 1
-- LOAD 2 10
-- :Loop 0
-- ADD 0 1 0
-- PRINT +{0}
-- JEQ 0 2 End_Loop
-- JUMP Loop
-- :End_Loop
-- HALT
-
+```python
+LOAD 0 1
+LOAD 1 1
+LOAD 2 5
+:Loop 0
+ADD 0 1 0
+PRINT +{0}
+JEQ 0 2 End_Loop
+JUMP Loop
+:End_Loop
+HALT
+```
+Output:
+```
+1
+2
+3
+4
+5
+```
 - So First of, you might notice HALT in the End_Loop marker.
 
 # HALT Should always be at the end of your program no matter what

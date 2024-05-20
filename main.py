@@ -324,7 +324,7 @@ def main():
                         key = search_dict(CODE_POINTERS, str(LINEVALUES[3]), return_index=True)
                         current_line = int(CODE_POINTERS[key][0])
                         last_operation = 'JNE'
-                        current_line -= 2
+                        current_line -= 1
                 elif int(LINEVALUES[3]) <= code_length:
                     if LINEVALUES[3].isdigit():
                         current_line = int(LINEVALUES[3])
@@ -353,7 +353,7 @@ def main():
                         key = search_dict(CODE_POINTERS, str(LINEVALUES[3]), return_index=True)
                         current_line = int(CODE_POINTERS[key][0])
                         last_operation = 'JLT'
-                        current_line -= 2
+                        current_line -= 1
                 elif int(LINEVALUES[3]) <= code_length:
                     if LINEVALUES[3].isdigit():
                         current_line = int(LINEVALUES[3])
@@ -383,7 +383,7 @@ def main():
                         key = search_dict(CODE_POINTERS, str(LINEVALUES[3]), return_index=True)
                         current_line = int(CODE_POINTERS[key][0])
                         last_operation = 'JGT'
-                        current_line -= 2
+                        current_line -= 1
                 elif int(LINEVALUES[3]) <= code_length:
                     if LINEVALUES[3].isdigit():
                         current_line = int(LINEVALUES[3])
@@ -413,7 +413,7 @@ def main():
                         key = search_dict(CODE_POINTERS, str(LINEVALUES[3]), return_index=True)
                         current_line = int(CODE_POINTERS[key][0])
                         last_operation = 'JEQ'
-                        current_line -= 2
+                        current_line -= 1
                 elif int(LINEVALUES[3]) <= code_length:
                     if LINEVALUES[3].isdigit():
                         current_line = int(LINEVALUES[3])
@@ -435,6 +435,7 @@ def main():
                         # Get the jump line from the code pointers
                         key = search_dict(CODE_POINTERS, str(LINEVALUES[1]), return_index=True)
                         current_line = int(CODE_POINTERS[key][0])
+                        current_line -= 1
                         continue
                 elif int(LINEVALUES[1]) <= code_length:
                     if LINEVALUES[1].isdigit():
