@@ -207,9 +207,9 @@ Ln 5 PRINT +World
 - Here is a Flow chart to visulize this action
 ```mermaid
 graph TD;
-        A-->B;
-        B-->Sum;
-        Sum-->A;
+        A(1)-->B(1);
+        B(1)-->Sum;
+        Sum(2)-->A(1);
 ```
 
 - So we are getting two values, 0 and 1.
