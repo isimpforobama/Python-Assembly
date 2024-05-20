@@ -26,29 +26,25 @@ Tutorial Video https://youtu.be/8VG2NYoaTHw
 # PRINT Syntax
 For these examples 0 will be assigned with a value of 10 and X will be assigned with 0's Value(10)
 Printing a Word
-- PRINT +Hello World!
-- Output: 
-- Hello World!
-
+```python
+PRINT +Hello World!
+Output: Hello World!
+```
 # Printing a Address
 - PRINT +{0}
-- Output: 
-- 10
+- Output: 10
 
 # Printing a Word and a Address
 - PRINT +Count is: +{0}
-- Output: 
-- Count is: 10
+- Output: Count is: 10
 
 # Printing a Pointer
 - PRINT +{X}
-- Output: 
-- 10
+- Output: 10
 
 # Printing using \n
 - PRINT +Hello+\n+World!
-- Output: 
-- Hello
+- Output: Hello
         World
 
 
@@ -58,20 +54,17 @@ For these examples we will Assign no inital values
 # Assigning a Pointer
 - POINTER (0 = X)
 - Output: 
-- 
 
 # Assigning a Pointer and printing it out
 - POINTER (0 = X)
 - PRINT +{X}
-- Output: 
-- 0
+- Output: 0
 
 # Assigning multiple Pointers
 - POINTER (0 = X)
 - POINTER (1 = Y)
 - POINTER (2 = SUM)
-- Output: 
-- 0
+- Output: 0
 - These above Pointers Reference Memory address's
 - Whenever you call upon a memory Address in Python Assembly,
 - you can call a Pointer if it's assigned to that memory address
@@ -82,31 +75,26 @@ For these examples we will Assign no inital values
 Loading a Value into a Address
 - LOAD 0 10
 - Output:
-
-- - Whenever you Load a value into something in Python Assembly make sure you call the address first 
+- Whenever you Load a value into something in Python Assembly make sure you call the address first 
 - then give it the value you want
 # Printing a Loaded Value
 - LOAD 0 100
 - PRINT +{0}
-- Output: 
-- 100
+- Output: 100
 
 # Printing a Loaded Value
 - LOAD 0 1000000
 - PRINT +{0}
-- Output: 
-- 1000000
+- Output: 1000000
 # Printing a Loaded Value
 - LOAD 1 10
 - PRINT +{1}
-- Output: 
-- 10
+- Output: 10
 # Printing a Loaded Value
 - LOAD 0 10
 - LOAD 1 20
 - PRINT +{0}
-- Output: 
-- 10
+- Output: 10
 
 # ADD Syntax
 
@@ -115,8 +103,7 @@ Loading a Value into a Address
 - LOAD 1 20
 - ADD 0 1 2
 - PRINT +{2}
-- Output: 
-- 30
+- Output: 30
 - Add takes three inputs, the first two are A and B both of which can take a Memory Address or a Pointer
 - the Third input C is the Outputed Memory address OR pointer that of which is the Sum of a + b
 - Pointer Options
@@ -132,8 +119,7 @@ Loading a Value into a Address
 - POINTER (2 = SUM)
 - ADD First_Number Second_Number SUM
 - PRINT +{SUM}
-- Output: 
-- 30
+- Output: 30
 - This is why Pointers are so Useful it's because they are Very Capable of calling your memory Address's with Ease
 
 
@@ -146,8 +132,7 @@ Loading a Value into a Address
 # Basic JUMP Operation
 - Ln 1 PRINT +Hello World
 - Ln 2 JUMP 1
-- Output: 
-- Hello World (Forever)
+- Output: Hello World (Forever)
 - 
 - the Jump operation is pretty self explanitory. it simply takes a number OR a marker
 - and runs that line of Code in the file and continues normal how it would from that line of code
@@ -160,8 +145,7 @@ Ln 2 JUMP 5
 Ln 3 PRINT +Goodbye
 Ln 4 PRINT +Goodbye
 Ln 5 PRINT +World
-- Output: 
-- Hello 
+- Output: Hello 
 -         World
 - When the Program seen the JUMP Operation it read that it wants to go to line 5 and since code order does not
 - magicaly go back up the Program simply ends and the Goodbye prints never get executed
@@ -180,8 +164,7 @@ Ln 5 PRINT +World
 - Ln 1 :My_Marker 0
 - Ln 2 PRINT +Hello World
 - Ln 3 JUMP My_Marker
-- Output: 
-- Hello World (Forever)
+- Output: Hello World (Forever)
 
 - a Conditional JUMP Operation is very useful for loops and despite the complicated look they are very easy to understand.
 - For this example we will be using the JEQ Operation
@@ -196,8 +179,7 @@ Ln 5 PRINT +World
 - Ln 3 :My_Marker 0
 - Ln 4 PRINT +Hello World
 - Ln 5 JEQ 0 1 My_Marker
-- Output: 
-- Hello World (Forever)
+- Output: Hello World (Forever)
 
 - In this case JEQ would return true therefor it would go to where we want in the code(My_Marker)
 
@@ -207,8 +189,7 @@ Ln 5 PRINT +World
 - Ln 3 :My_Marker 0
 - Ln 4 PRINT +Hello World
 - Ln 5 JEQ 0 1 My_Marker
-- Output: 
-- Hello World
+- Output: Hello World
 
 - In this case JEQ would return false therefor it would print once and not jump in the code
 
@@ -221,8 +202,7 @@ Ln 5 PRINT +World
 - LOAD 1 1
 - ADD 0 1 0
 - PRINT +{0}
-- Output: 
-- 2
+- Output: 2
 
 - So we are getting two values, 0 and 1.
 - we are adding 0 and 1 together and putting the sum of that back into 0
@@ -238,8 +218,7 @@ Ln 5 PRINT +World
 - ADD 0 1 0
 - PRINT +{0}
 - JUMP Loop
-- Output: 
-- 1
+- Output: 1
           2
           3...(Forever)
 
