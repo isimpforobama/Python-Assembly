@@ -318,9 +318,8 @@ PRINT +{0}
 - Here is a Flow chart to visulize this action
 ```mermaid
 graph TD;
-        A-->B;
-        B-->Sum;
-        Sum-->A;
+        A+B-->SUM;
+        SUM-->A+B;
 ```
 
 - So we are getting two values, 0 and 1.
