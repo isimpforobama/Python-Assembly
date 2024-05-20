@@ -345,14 +345,8 @@ JUMP Loop
 3
 ...(Forever)
 ```
-- Here is a Flow chart to visulize this action
-```mermaid
-graph TD;
-        Ln 1 ADD A+B>SUM;
-        Ln 2 JUMP 1-->Ln 1 ADD A+B>SUM;
-```
 
-- Now this last part is a little challenging but here is a Loop with a Condition that if the count reaches 10 ten it will stop
+- This Above Code simply Increments but loops over the incrementer
 
 # Conditional Loop Incrementer
 - LOAD 0 1
