@@ -27,7 +27,7 @@ Tutorial Video https://youtu.be/8VG2NYoaTHw
 For these examples 0 will be assigned with a value of 10 and X will be assigned with 0's Value(10)
 Printing a Word
 - PRINT +Hello World!
-# Output: Hello World!
+Output: Hello World!
 
 # Printing a Address
 - PRINT +{0}
@@ -63,7 +63,7 @@ Output: 0
 - POINTER (0 = X)
 - POINTER (1 = Y)
 - POINTER (2 = SUM)
-# Output: 0
+Output: 0
 These above Pointers Reference Memory address's
 Whenever you call upon a memory Address in Python Assembly,
 you can call a Pointer if it's assigned to that memory address
@@ -79,7 +79,7 @@ then give it the value you want
 # Printing a Loaded Value
 - LOAD 0 100
 - PRINT +{0}
-# Output: 100
+Output: 100
 
 # Printing a Loaded Value
 - LOAD 0 1000000
