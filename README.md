@@ -29,7 +29,10 @@ Printing a Word
 ```python
 PRINT +Hello World!
 ```
-Output: Hello World!
+- Output:
+```
+Hello World!
+```
 # Printing a Address
 - PRINT +{0}
 - Output: 10
@@ -218,10 +221,9 @@ graph TD;
 
 - So we are getting two values, 0 and 1.
 - we are adding 0 and 1 together and putting the sum of that back into 0
-- The Reason for this is simple, Instead of dumping the sum into another address rather, putting it back into the inital
-- address is so we can actually increment the address
+- The Reason for this is simple, Instead of dumping the sum into another address rather, putting it back into the,
+- inital address is so we can increment the address
 - think of the address 1 as the amount we increment 0 by
-- 
 - we can also modify this to loop
 # Basic Loop Incrementer
 - LOAD 0 1
