@@ -269,7 +269,7 @@ Hello World
 - JEQ Tests if A and B is Equal to Eachother
 - A and B can be either Memory Address's or Pointers
 
-# Conditional JUMP Operations (True)
+# Conditional JUMP Operation (True)
 ```python
 Ln 1 LOAD 0 10
 Ln 2 LOAD 1 10
@@ -287,7 +287,7 @@ Hello World
 
 - In this case JEQ would return true therefor it would go to where we want in the code(My_Marker)
 
-# Conditional JUMP Operations (False)
+# Conditional JUMP Operation (False)
 ```python
 Ln 1 LOAD 0 10
 Ln 2 LOAD 1 5
