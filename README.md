@@ -24,8 +24,8 @@ Tutorial Video https://youtu.be/8VG2NYoaTHw
 
 
 # PRINT Syntax
-# For these examples 0 will be assigned with a value of 10 and X will be assigned with 0's Value(10)
-# Printing a Word
+For these examples 0 will be assigned with a value of 10 and X will be assigned with 0's Value(10)
+Printing a Word
 - PRINT +Hello World!
 # Output: Hello World!
 
@@ -48,7 +48,8 @@ Tutorial Video https://youtu.be/8VG2NYoaTHw
 
 
 
-# POINTER Syntax, For these examples we will Assign no inital values
+# POINTER Syntax
+For these examples we will Assign no inital values
 # Assigning a Pointer
 - POINTER (0 = X)
 # Output: 
