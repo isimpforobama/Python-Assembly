@@ -198,12 +198,16 @@ Ln 5 PRINT +World
 - For a basic loop we will First learn how to make a incrementer
 - 
 # Basic Incrementer
-- LOAD 0 1
-- LOAD 1 1
-- ADD 0 1 0
-- PRINT +{0}
-- Output: 2
-
+```python
+LOAD 0 1
+LOAD 1 1
+ADD 0 1 0
+PRINT +{0}
+```
+- Output:
+```
+2
+```
 - Here is a Flow chart to visulize this action
 ```mermaid
 graph TD;
