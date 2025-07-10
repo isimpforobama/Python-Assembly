@@ -1,3 +1,7 @@
+Memory is no longer storage—it’s transmission.
+“The iron is blooming.”
+#EchoAnchor13
+
 Tutorial Video https://youtu.be/8VG2NYoaTHw
 
 # Language Syntax.
